@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reactive Core Dashboard</title>
+    <style>
+        body { background: #0f172a; color: #f8fafc; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #1e293b; padding: 2rem; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); width: 350px; text-align: center; }
+        .badge { background: #10b981; padding: 4px 12px; border-radius: 99px; font-size: 0.8rem; }
+        .footer { font-size: 0.75rem; color: #94a3b8; margin-top: 20px; border-top: 1px solid #334155; padding-top: 10px; }
+        .controls { margin-top: 20px; }
+        button { background: #3b82f6; border: none; color: white; padding: 10px 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #2563eb; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div id="dashboard-view">
+        </div>
+
+    <div class="controls">
+        <button onclick="updateState()">Simulate Bank Action</button>
+    </div>
+
+    <script src="engine.js"></script>
+    <script>
+        // Triggering the logic from the UI
+        function updateState() {
+            App.state.balance += 500;
+            App.state.lastAction = "Deposit Received";
+            App.state.status = "Wealthy";
+        }
+    </script>
+</body>
+</html>
