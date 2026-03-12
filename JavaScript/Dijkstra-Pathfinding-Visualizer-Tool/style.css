@@ -1,0 +1,66 @@
+:root {
+    --bg-deep: #1A1A1B;
+    --bg-panel: #242526;
+    --border: #2D2E30;
+    --accent: #FF5F1F; /* Safety Orange */
+    --text-dim: #6E7073;
+    --text-bright: #E8EAED;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', monospace; }
+
+body { background-color: var(--bg-deep); color: var(--text-bright); height: 100vh; display: flex; flex-direction: column; }
+
+.header { 
+    padding: 30px 50px; 
+    border-bottom: 2px solid var(--border); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    background: #111112;
+}
+
+h1 { font-size: 1.2rem; letter-spacing: 5px; color: var(--accent); }
+.title-block p { font-size: 0.6rem; color: var(--text-dim); margin-top: 5px; }
+
+.controls button {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.controls button:hover { background: var(--accent); color: #000; }
+
+#grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(40, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: 1px;
+    background: var(--border);
+    padding: 1px;
+}
+
+.cell { background: var(--bg-deep); transition: background 0.1s; }
+.cell.wall { background: #000; border: 1px solid #333; }
+.cell.start { background: #fff; }
+.cell.end { background: var(--accent); }
+.cell.visited { background: #2D2E30; }
+.cell.path { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+.operator-signature {
+    position: fixed; bottom: 20px; left: 20px;
+    display: flex; align-items: center; gap: 15px;
+    background: rgba(0,0,0,0.8); padding: 10px 20px;
+    border: 1px solid var(--border);
+}
+
+.operator-signature svg { width: 18px; fill: var(--text-dim); transition: 0.3s; }
+.operator-signature svg:hover { fill: var(--accent); }
+.operator-signature span { font-size: 0.6rem; color: var(--text-dim); letter-spacing: 2px; }
