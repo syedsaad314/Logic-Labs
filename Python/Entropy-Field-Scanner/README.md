@@ -27,4 +27,5 @@ To run the scanner, follow these plain-text steps:
 
 ---
 Lead Developer: Syed Saad Bin Irfan
+
 Logic: Data Forensics & Information Theory
