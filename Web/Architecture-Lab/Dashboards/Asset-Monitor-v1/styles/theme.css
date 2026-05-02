@@ -1,0 +1,105 @@
+/*
+ * SPRINT DAY 1: Theme Engine & Root Architecture
+ * Theme: Obsidian & Solar-Flare
+ * Concept: Matte dark backgrounds with vivid, high-contrast thermal/energy accents.
+ */
+
+:root {
+    /* Obsidian Color Palette */
+    --bg-void: #07080A;      /* Deepest black for the absolute background */
+    --bg-surface: #111318;   /* Slightly lighter for widget cards */
+    --bg-elevated: #1A1D24;  /* Hover states */
+    
+    /* Solar Flare Accents */
+    --flare-primary: #FF5A09;   /* Vivid Safety Orange */
+    --flare-glow: rgba(255, 90, 9, 0.2);
+    --flare-critical: #F12711;  /* Intense Red/Orange for alerts */
+    
+    /* Typography */
+    --text-primary: #E2E8F0;
+    --text-muted: #64748B;
+    --font-mono: 'Courier New', Courier, monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    height: 100vh;
+    overflow: hidden; /* Lock the screen for a true app feel */
+}
+
+/* --- Structural Grid System --- */
+.dashboard-shell {
+    display: grid;
+    grid-template-columns: 260px 1fr; /* Sidebar fixed, Main takes the rest */
+    height: 100vh;
+}
+
+/* Sidebar Placeholder Styling */
+.sidebar {
+    background-color: var(--bg-surface);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-logo {
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: var(--flare-primary);
+    text-shadow: 0 0 10px var(--flare-glow);
+    margin-bottom: 3rem;
+}
+
+/* Main Content Area */
+.data-arena {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* The first micro-interaction: The Pulse Ring */
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.pulse-ring {
+    width: 8px;
+    height: 8px;
+    background-color: var(--flare-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255, 90, 9, 0.7);
+    animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 12px rgba(255, 90, 9, 0);
+    }
+}
