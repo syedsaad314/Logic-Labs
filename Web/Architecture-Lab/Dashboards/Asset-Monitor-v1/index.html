@@ -49,6 +49,41 @@
             </header>
             
             <div class="widget-grid" id="main-monitor">
+                <!-- Main Metric Card -->
+            <div class="card metric-card">
+            <div class="card-header">
+            <span class="card-title">SERVER LOAD</span>
+            <span class="status-dot healthy"></span>
+            </div>
+        <div class="card-body">
+            <div class="main-value">24<span class="unit">%</span></div>
+            <div class="trend positive">↘ -2.4% from last hour</div>
+        </div>
+    </div>
+
+    <!-- Secondary Metric Card -->
+    <div class="card metric-card">
+        <div class="card-header">
+            <span class="card-title">ACTIVE THREADS</span>
+            <span class="status-dot warning"></span>
+        </div>
+        <div class="card-body">
+            <div class="main-value highlight">1,402</div>
+            <div class="trend negative">↗ +15% from last hour</div>
+        </div>
+    </div>
+
+    <!-- Data Visualization Placeholder (Spans 2 columns) -->
+    <div class="card chart-card">
+        <div class="card-header">
+            <span class="card-title">NETWORK THROUGHPUT</span>
+        </div>
+        <div class="chart-area">
+            <!-- Tomorrow we will animate this with JS -->
+            <div class="mock-chart-line"></div>
+        </div>
+    </div>
+</div>
                 <!-- Data cards and charts will be built here on Day 3 -->
             </div>
         </main>

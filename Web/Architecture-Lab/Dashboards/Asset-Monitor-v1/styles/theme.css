@@ -187,3 +187,108 @@ body {
     font-weight: bold;
     color: var(--text-muted);
 }
+/* SPRINT DAY 3: Widget Grid & Data Cards */
+
+.widget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.card {
+    background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle glow effect on the top edge of cards */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.healthy { background: #10B981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
+.status-dot.warning { background: var(--flare-primary); box-shadow: 0 0 8px var(--flare-glow); }
+
+.main-value {
+    font-size: 2.5rem;
+    font-weight: 300;
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+}
+
+.main-value.highlight {
+    color: var(--flare-primary);
+    text-shadow: 0 0 15px var(--flare-glow);
+}
+
+.main-value .unit {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-left: 0.2rem;
+}
+
+.trend {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.trend.positive { color: #10B981; }
+.trend.negative { color: var(--flare-critical); }
+
+.chart-card {
+    grid-column: span 2; /* Takes up two grid slots */
+    min-height: 200px;
+}
+
+.chart-area {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    margin-top: 1rem;
+}
+
+.mock-chart-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--flare-primary), transparent);
+    box-shadow: 0 0 10px var(--flare-glow);
+}
+
+/* Make it responsive */
+@media (max-width: 1024px) {
+    .chart-card { grid-column: span 1; }
+}
