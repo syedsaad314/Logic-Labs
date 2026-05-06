@@ -88,5 +88,26 @@
             </div>
         </main>
     </div>
+    <script>
+    // Day 4: Live Data Simulation
+    function updateMetrics() {
+        const loadVal = document.querySelector('.main-value');
+        const newValue = Math.floor(Math.random() * (95 - 10 + 1)) + 10;
+        
+        loadVal.innerHTML = `${newValue}<span class="unit">%</span>`;
+        
+        // Dynamic color shifting for critical loads
+        if(newValue > 80) {
+            loadVal.style.color = "var(--flare-critical)";
+            loadVal.style.textShadow = "0 0 20px rgba(241, 39, 17, 0.4)";
+        } else {
+            loadVal.style.color = "var(--text-primary)";
+            loadVal.style.textShadow = "none";
+        }
+    }
+
+    // Run every 2 seconds to keep the UI "Lively"
+    setInterval(updateMetrics, 2000);
+</script>
 </body>
 </html>
