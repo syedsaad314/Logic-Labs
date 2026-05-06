@@ -34,7 +34,7 @@ int main() {
 
     // Safety check to keep it within your 5-8 range
     if (totalSubjects < 5 || totalSubjects > 8) {
-        cout << "Invalid choice! Please restart and pick between 5 and 8." << endl;
+        cout << "Invalid choice!" << endl;
         return 0;
     }
 

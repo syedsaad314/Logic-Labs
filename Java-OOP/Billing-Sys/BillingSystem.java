@@ -26,7 +26,7 @@ class PremiumCustomer extends Customer {
     double applyDiscount(double amount) { return amount * 0.85; } // 15% off
 }
 
-public class BillingSystem {
+public class BillingSystem { 
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
             System.out.println("\033[1m--- Logic Labs: Billing System ---\033[0m");
