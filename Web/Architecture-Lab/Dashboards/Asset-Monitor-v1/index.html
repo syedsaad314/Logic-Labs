@@ -7,38 +7,45 @@
     <link rel="stylesheet" href="./styles/theme.css">
 </head>
 <body>
-    <!-- The grid skeleton. Content will be injected over the next 3 days. -->
-    <div class="dashboard-shell">
-        < class="sidebar" id="nav-system">
-            <div class="brand-logo">SYS_CORE</div>
-            <!-- Navigation will go here -->
-        <aside class="sidebar" id="nav-system">
-    <div class="brand-logo">SYS_CORE</div>
-    <nav class="nav-links">
-        <div class="nav-item active">
-            <span class="nav-icon">▤</span>
-            <span class="nav-text">OVERVIEW</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">⚙</span>
-            <span class="nav-text">RESOURCES</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">⚡</span>
-            <span class="nav-text">NETWORK</span>
-        </div>
-        <div class="nav-item">
-            <span class="nav-icon">⚠</span>
-            <span class="nav-text">ALERTS</span>
-        </div>
-    </nav>
-    <div class="sidebar-footer">
-        <div class="user-chip">
-            <div class="avatar">S</div>
-            <span>ADMIN_SAAD</span>
+    <div class="auth-overlay" id="auth-screen">
+        <div class="auth-box">
+            <div class="auth-logo">SYS_CORE</div>
+            <h2>AUTHORIZATION REQUIRED</h2>
+            <p>Enter administrative credentials to access telemetry.</p>
+            <input type="password" class="auth-input" placeholder="Enter Access Code..." id="passcode">
+            <button class="auth-btn" onclick="unlockSystem()">INITIALIZE SYSTEM</button>
+            <div class="auth-error" id="error-msg"></div>
         </div>
     </div>
-</aside>
+
+    <div class="dashboard-shell">
+        <aside class="sidebar" id="nav-system">
+            <div class="brand-logo">SYS_CORE</div>
+            <nav class="nav-links">
+                <div class="nav-item active">
+                    <span class="nav-icon">▤</span>
+                    <span class="nav-text">OVERVIEW</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span class="nav-text">RESOURCES</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">⚡</span>
+                    <span class="nav-text">NETWORK</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">⚠</span>
+                    <span class="nav-text">ALERTS</span>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-chip">
+                    <div class="avatar">S</div>
+                    <span>ADMIN_SAAD</span>
+                </div>
+            </div>
+        </aside>
         
         <main class="data-arena">
             <header class="top-bar">
@@ -49,65 +56,75 @@
             </header>
             
             <div class="widget-grid" id="main-monitor">
-                <!-- Main Metric Card -->
-            <div class="card metric-card">
-            <div class="card-header">
-            <span class="card-title">SERVER LOAD</span>
-            <span class="status-dot healthy"></span>
-            </div>
-        <div class="card-body">
-            <div class="main-value">24<span class="unit">%</span></div>
-            <div class="trend positive">↘ -2.4% from last hour</div>
-        </div>
-    </div>
+                <div class="card metric-card">
+                    <div class="card-header">
+                        <span class="card-title">SERVER LOAD</span>
+                        <span class="status-dot healthy"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="main-value">24<span class="unit">%</span></div>
+                        <div class="trend positive">↘ -2.4% from last hour</div>
+                    </div>
+                </div>
 
-    <!-- Secondary Metric Card -->
-    <div class="card metric-card">
-        <div class="card-header">
-            <span class="card-title">ACTIVE THREADS</span>
-            <span class="status-dot warning"></span>
-        </div>
-        <div class="card-body">
-            <div class="main-value highlight">1,402</div>
-            <div class="trend negative">↗ +15% from last hour</div>
-        </div>
-    </div>
+                <div class="card metric-card">
+                    <div class="card-header">
+                        <span class="card-title">ACTIVE THREADS</span>
+                        <span class="status-dot warning"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="main-value highlight">1,402</div>
+                        <div class="trend negative">↗ +15% from last hour</div>
+                    </div>
+                </div>
 
-    <!-- Data Visualization Placeholder (Spans 2 columns) -->
-    <div class="card chart-card">
-        <div class="card-header">
-            <span class="card-title">NETWORK THROUGHPUT</span>
-        </div>
-        <div class="chart-area">
-            <!-- Tomorrow we will animate this with JS -->
-            <div class="mock-chart-line"></div>
-        </div>
-    </div>
-</div>
-                <!-- Data cards and charts will be built here on Day 3 -->
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <span class="card-title">NETWORK THROUGHPUT</span>
+                    </div>
+                    <div class="chart-area">
+                        <div class="mock-chart-line"></div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
-    <script>
-    // Day 4: Live Data Simulation
-    function updateMetrics() {
-        const loadVal = document.querySelector('.main-value');
-        const newValue = Math.floor(Math.random() * (95 - 10 + 1)) + 10;
-        
-        loadVal.innerHTML = `${newValue}<span class="unit">%</span>`;
-        
-        // Dynamic color shifting for critical loads
-        if(newValue > 80) {
-            loadVal.style.color = "var(--flare-critical)";
-            loadVal.style.textShadow = "0 0 20px rgba(241, 39, 17, 0.4)";
-        } else {
-            loadVal.style.color = "var(--text-primary)";
-            loadVal.style.textShadow = "none";
-        }
-    }
 
-    // Run every 2 seconds to keep the UI "Lively"
-    setInterval(updateMetrics, 2000);
-</script>
+    <script>
+        // Security Unlock Logic
+        function unlockSystem() {
+            const input = document.getElementById('passcode').value;
+            const error = document.getElementById('error-msg');
+            
+            if(input === "admin") { // Password is 'admin'
+                error.innerText = "";
+                const overlay = document.getElementById('auth-screen');
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.style.display = 'none', 500);
+            } else {
+                error.innerText = "ACCESS DENIED: INVALID SIGNATURE";
+            }
+        }
+
+        // Live Data Simulation
+        function updateMetrics() {
+            const loadVal = document.querySelector('.main-value');
+            const newValue = Math.floor(Math.random() * (95 - 10 + 1)) + 10;
+            
+            loadVal.innerHTML = `${newValue}<span class="unit">%</span>`;
+            
+            // Dynamic color shifting for critical loads
+            if(newValue > 80) {
+                loadVal.style.color = "var(--flare-critical)";
+                loadVal.style.textShadow = "0 0 20px rgba(241, 39, 17, 0.4)";
+            } else {
+                loadVal.style.color = "var(--text-primary)";
+                loadVal.style.textShadow = "none";
+            }
+        }
+
+        // Run data update every 2 seconds
+        setInterval(updateMetrics, 2000);
+    </script>
 </body>
 </html>
