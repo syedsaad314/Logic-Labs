@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        :root { --accent: #00f2ff; }
+        body {
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden;
+        }
+        .glass-card {
+            width: 500px; height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            position: relative; padding: 30px; color: white;
+        }
+        .status-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--accent); padding-bottom: 10px; }
+        .scan-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--accent); opacity: 0.5;
+            box-shadow: 0 0 15px var(--accent);
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        .metric { margin-top: 20px; font-family: monospace; }
+        .pulse { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <div class="scan-line"></div>
+        <div class="status-header">
+            <span>NETWORK_CORE_v4</span>
+            <span class="pulse">● LIVE_SYNC</span>
+        </div>
+        <div class="metric">
+            <p>> UPTIME: 1,402 hrs</p>
+            <p>> PACKET_LOSS: 0.002%</p>
+            <p>> ENCRYPTION: AES-256-GCM</p>
+            <br>
+            <p style="color: #666;">Waiting for master node command...</p>
+        </div>
+    </div>
+</body>
+</html>
