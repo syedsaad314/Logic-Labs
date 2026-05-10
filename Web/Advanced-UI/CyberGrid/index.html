@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; padding: 50px; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .data-cell {
+            background: #000; border: 1px solid #003300; border-radius: 5px;
+            padding: 20px; text-align: center; transition: all 0.3s;
+            box-shadow: inset 0 0 10px #001100;
+        }
+        .data-cell:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 20px #003300;
+            transform: translateY(-5px) scale(1.05);
+            cursor: pointer;
+        }
+        .value { font-size: 1.5rem; font-weight: bold; display: block; margin-bottom: 5px; }
+        .label { font-size: 0.7rem; color: #008f11; text-transform: uppercase; }
+        .pulse { animation: pulse-border 2s infinite; }
+        @keyframes pulse-border { 50% { border-color: #008f11; } }
+    </style>
+</head>
+<body>
+    <h2 style="margin-bottom: 30px;">// SYSTEM_METRICS_v3.0</h2>
+    <div class="grid-container">
+        <div class="data-cell pulse">
+            <span class="value">98.2%</span>
+            <span class="label">UPTIME</span>
+        </div>
+        <div class="data-cell">
+            <span class="value">42ms</span>
+            <span class="label">LATENCY</span>
+        </div>
+        <div class="data-cell">
+            <span class="value">0.04</span>
+            <span class="label">LOAD_AVG</span>
+        </div>
+        <div class="data-cell">
+            <span class="value">SECURED</span>
+            <span class="label">ENCRYPTION</span>
+        </div>
+    </div>
+</body>
+</html>
