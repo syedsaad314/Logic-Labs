@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root { --bg: #e0e0e0; --shadow: #bebebe; --light: #ffffff; --accent: #4ade80; }
+        body { background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: 'Segoe UI', sans-serif; }
+        .card {
+            width: 400px; padding: 40px;
+            background: var(--bg); border-radius: 50px;
+            box-shadow: 20px 20px 60px var(--shadow), -20px -20px 60px var(--light);
+            text-align: center;
+        }
+        .monitor-display {
+            height: 80px; margin-bottom: 30px;
+            background: inset; border-radius: 20px;
+            box-shadow: inset 6px 6px 12px var(--shadow), inset -6px -6px 12px var(--light);
+            display: flex; align-items: center; justify-content: center;
+            color: #555; font-weight: bold; font-family: monospace;
+        }
+        .btn {
+            padding: 15px 30px; border: none; border-radius: 15px;
+            background: var(--bg); color: #666; font-weight: bold;
+            box-shadow: 6px 6px 12px var(--shadow), -6px -6px 12px var(--light);
+            cursor: pointer; transition: 0.2s;
+        }
+        .btn:active { box-shadow: inset 4px 4px 8px var(--shadow), inset -4px -4px 8px var(--light); }
+        .bar-bg { height: 10px; width: 100%; background: #ccc; border-radius: 5px; margin-top: 20px; overflow: hidden; }
+        .bar-fill { height: 100%; width: 75%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3 style="color: #888;">LOGIC_LAB_CORE_v2</h3>
+        <div class="monitor-display">> UPTIME: 09:12:44</div>
+        <button class="btn">EXECUTE_REBOOT</button>
+        <div class="bar-bg"><div class="bar-fill"></div></div>
+        <p style="font-size: 10px; color: #aaa; margin-top: 10px;">SYSTEM STABLE // 75% MEMORY_LATENCY</p>
+    </div>
+</body>
+</html>
