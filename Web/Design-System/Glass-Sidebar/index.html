@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #0a0a0a; color: white; font-family: sans-serif; display: flex; }
+        .sidebar {
+            width: 240px; height: 100vh;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; flex-direction: column; padding: 20px;
+        }
+        .nav-item {
+            padding: 15px; margin: 5px 0;
+            border-radius: 8px; transition: 0.3s;
+            cursor: pointer; position: relative;
+            color: #888;
+        }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #00f2ff;
+            padding-left: 25px;
+        }
+        .nav-item:hover::before {
+            content: ""; position: absolute; left: 0; top: 20%;
+            height: 60%; width: 4px; background: #00f2ff;
+            border-radius: 0 4px 4px 0;
+        }
+        .logo { font-weight: bold; font-size: 1.2rem; margin-bottom: 40px; color: #00f2ff; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">LOGIC_LAB // 2026</div>
+        <div class="nav-item">Core_Dashboard</div>
+        <div class="nav-item">System_Audit</div>
+        <div class="nav-item">Network_Nodes</div>
+        <div class="nav-item">Security_Vault</div>
+    </div>
+</body>
+</html>
