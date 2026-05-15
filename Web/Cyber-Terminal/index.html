@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body { background-color: #0d0d0d; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 0; display: flex; justify-content: center; height: 100vh; align-items: center; overflow: hidden; }
+        .terminal-window { width: 600px; height: 400px; background: #000; border: 1px solid #333; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); padding: 20px; overflow-y: auto; position: relative; }
+        .terminal-header { border-bottom: 1px dashed #00ff00; padding-bottom: 10px; margin-bottom: 15px; font-size: 0.9em; opacity: 0.8; }
+        .input-line { display: flex; margin-top: 10px; }
+        .prompt { margin-right: 10px; color: #00ffff; }
+        .command-input { background: transparent; border: none; color: #00ff00; font-family: inherit; font-size: 1em; flex-grow: 1; outline: none; }
+        .cursor { display: inline-block; width: 8px; height: 15px; background: #00ff00; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div class="terminal-window" id="term">
+        <div class="terminal-header">LOGIC_LAB_OS v2.4.1 // SYSTEM BOOT SUCCESS</div>
+        <div id="output"></div>
+        <div class="input-line">
+            <span class="prompt">guest@logic-lab:~$</span>
+            <input type="text" class="command-input" id="cmd" autocomplete="off" autofocus>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById('cmd');
+        const output = document.getElementById('output');
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const val = input.value;
+                const line = document.createElement('div');
+                line.innerHTML = `<span style="color:#00ffff">guest@logic-lab:~$</span> ${val}`;
+                output.appendChild(line);
+                
+                const response = document.createElement('div');
+                response.style.color = '#888';
+                response.innerText = val === 'help' ? '> Available commands: help, status, clear' : `> command not found: ${val}`;
+                if(val === 'clear') { output.innerHTML = ''; response.innerText = ''; }
+                
+                output.appendChild(response);
+                input.value = '';
+                document.getElementById('term').scrollTop = document.getElementById('term').scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
