@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #0b0c10; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; color: #66fcf1; }
+        .cluster { display: grid; grid-template-columns: repeat(3, 150px); gap: 40px; position: relative; }
+        .node { 
+            background: #1f2833; border: 2px solid #45a29e; border-radius: 10px; 
+            padding: 20px; text-align: center; box-shadow: 0 0 15px rgba(69, 162, 158, 0.2);
+            transition: 0.3s;
+        }
+        .node:hover { transform: scale(1.05); border-color: #66fcf1; box-shadow: 0 0 25px rgba(102, 252, 241, 0.5); cursor: pointer; }
+        .node-title { font-weight: bold; font-size: 14px; margin-bottom: 10px; }
+        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; background: #66fcf1; animation: pulse 1.5s infinite; }
+        .critical { border-color: #ff003c; color: #ff003c; }
+        .critical .status-dot { background: #ff003c; animation: fast-pulse 0.5s infinite; }
+        
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(102, 252, 241, 0); } 100% { box-shadow: 0 0 0 0 rgba(102, 252, 241, 0); } }
+        @keyframes fast-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 60, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 0, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 60, 0); } }
+    </style>
+</head>
+<body>
+    <div class="cluster">
+        <div class="node" style="grid-column: 2;">
+            <div class="node-title">API_GATEWAY</div>
+            <div class="status-dot"></div> 200 OK
+        </div>
+        <div class="node">
+            <div class="node-title">AUTH_NODE</div>
+            <div class="status-dot"></div> 200 OK
+        </div>
+        <div class="node critical">
+            <div class="node-title">PAYMENT_DB</div>
+            <div class="status-dot"></div> 503 FAIL
+        </div>
+        <div class="node">
+            <div class="node-title">REDIS_CACHE</div>
+            <div class="status-dot"></div> 200 OK
+        </div>
+    </div>
+</body>
+</html>
